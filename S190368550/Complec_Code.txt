@@ -1,0 +1,119 @@
+package all;
+import java.util.*;
+
+class Complex_Op {
+	
+	float real, imag;
+	
+	 Complex_Op() {
+		real = 0;
+		imag = 0;
+	}
+	
+	
+	Complex_Op (float r, float i) {
+		real = r;
+		imag = i;
+	}
+	
+	void addnumbers(Complex_Op c1, Complex_Op c2) {
+		float real, imag;
+		
+		real = c1.real + c2.real;
+		imag = c1.imag + c2.imag;
+		
+		System.out.println("Addition is: "+"("+real+")+("+imag+")i");
+	}
+	
+	void subnumbers(Complex_Op c1, Complex_Op c2) {
+		float real, imag;
+		
+		real = c1.real - c2.real;
+		imag = c1.imag - c2.imag;
+		
+		System.out.println("Subtraction is: "+"("+real+")+("+imag+")i");
+	}
+	
+	
+	void mulnumbers(Complex_Op c1, Complex_Op c2) {
+		float real, imag;
+		
+		real = (c1.real*c2.imag)-(c1.imag*c2.imag) ;
+		
+		imag = (c2.real*c1.imag)+(c2.imag*c1.real) ;
+		
+		System.out.println("Multiplication is: "+"("+real+")+("+imag+")i");
+		
+	}
+	
+	void divnumbers(Complex_Op c1, Complex_Op c2) {
+			float real, imag;
+			
+			real = ((c1.real * c2.imag)+(c2.real* c1.imag)/(c2.real*c2.real)+(c2.imag*c2.imag));
+			
+			imag = ((c2.real * c1.imag)-(c1.real* c2.imag)/(c2.real*c2.real)+(c2.imag*c2.imag));
+			
+			System.out.println("Division is: "+"("+real+")+("+imag+")i");
+	}
+	
+	
+}
+
+public class complex {
+	
+	public static void main(String[]args) {
+		int ch;
+		
+		float real, imag;
+		Scanner sc = new Scanner(System.in);
+		
+		Complex_Op cal = new Complex_Op();
+		
+		System.out.println("Enter first number:");
+		real = sc.nextFloat();
+		imag = sc.nextFloat();
+		Complex_Op object1 = new Complex_Op(real, imag);
+
+		
+		System.out.println("Enter second number:");
+		real = sc.nextFloat();
+		imag = sc.nextFloat();
+		Complex_Op object2 = new Complex_Op(real, imag);
+		
+
+		
+		System.out.println("1.addnumbers");
+		System.out.println("2.sunnumbers");
+		System.out.println("3.mulnumbers");
+		System.out.println("4.divnumbers");
+		System.out.println("5.exit");
+		
+		do {
+		
+			System.out.println("Enter your choice: ");
+			
+			ch = sc.nextInt();
+			
+			switch(ch) {
+			
+			case 1: cal.addnumbers(object1, object2);
+					break;
+			
+			case 2: cal.subnumbers(object1, object2);
+					break;
+					
+			case 3: cal.mulnumbers(object1, object2);
+					break;
+					
+			case 4: cal.divnumbers(object1, object2);
+					break;
+						
+			case 5: System.out.println("Exit, Thank You !!! ");
+					break;
+					
+			case 6: System.out.println("*****Invalid Choice!!!*****");
+					break;
+			}
+		} while(ch!=5);
+	}
+}
